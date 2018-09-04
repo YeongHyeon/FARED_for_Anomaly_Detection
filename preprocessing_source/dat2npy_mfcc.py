@@ -73,38 +73,38 @@ def main(smdname):
             if(window_end >= signal.shape[0]):
                 break
 
-            # plt.clf()
-            # plt.rcParams['font.size'] = 15
-            # plt.imshow(np.rot90(melspectrogram, k=1), cmap='nipy_spectral_r')
-            # plt.ylabel("Time")
-            # plt.xlabel("Mel-scale Frequency")
-            # plt.tight_layout(pad=1, w_pad=1, h_pad=1)
-            # plt.savefig("./dataset_mfcc/%s/spectra/%s/%s.png" %(smd, wavname, savename))
-            # plt.close()
-            #
-            # plt.clf()
-            # plt.rcParams['font.size'] = 15
-            # plt.plot(mfcc_spectrum, linewidth=1, color='navy')
-            # plt.ylabel("MFCC")
-            # plt.xlabel("Mel-scale Frequency")
-            # plt.tight_layout(pad=1, w_pad=1, h_pad=1)
-            # plt.savefig("./dataset_mfcc/%s/spectra/%s/%s_avg.png" %(smd, wavname, savename))
-            # plt.close()
-            #
-            # plt.clf()
-            # plt.subplot(211)
-            # plt.title("Original Signal")
-            # plt.plot(signal[window_start:window_end], linewidth=1, color='black')
-            # plt.ylabel("Amplitude")
-            # plt.xlabel("Time (Sampling Rate: %d)" %(sr))
-            # plt.subplot(212)
-            # plt.title("MFCC Spectrum")
-            # plt.plot(mfcc_spectrum, linewidth=1, color='red')
-            # plt.ylabel("MFCC")
-            # plt.xlabel("Mel-scale Frequency")
-            # plt.tight_layout(pad=1, w_pad=1, h_pad=1)
-            # plt.savefig("./dataset_mfcc/%s/plot/%s/%s.png" %(smd, wavname, savename))
-            # plt.close()
+            plt.clf()
+            plt.rcParams['font.size'] = 15
+            plt.imshow(np.rot90(melspectrogram, k=1), cmap='nipy_spectral_r')
+            plt.ylabel("Time")
+            plt.xlabel("Mel-scale Frequency")
+            plt.tight_layout(pad=1, w_pad=1, h_pad=1)
+            plt.savefig("./dataset_mfcc/%s/spectra/%s/%s.png" %(smd, wavname, savename))
+            plt.close()
+
+            plt.clf()
+            plt.rcParams['font.size'] = 15
+            plt.plot(mfcc_spectrum, linewidth=1, color='navy')
+            plt.ylabel("MFCC")
+            plt.xlabel("Mel-scale Frequency")
+            plt.tight_layout(pad=1, w_pad=1, h_pad=1)
+            plt.savefig("./dataset_mfcc/%s/spectra/%s/%s_avg.png" %(smd, wavname, savename))
+            plt.close()
+
+            plt.clf()
+            plt.subplot(211)
+            plt.title("Original Signal")
+            plt.plot(signal[window_start:window_end], linewidth=1, color='black')
+            plt.ylabel("Amplitude")
+            plt.xlabel("Time (Sampling Rate: %d)" %(sr))
+            plt.subplot(212)
+            plt.title("MFCC Spectrum")
+            plt.plot(mfcc_spectrum, linewidth=1, color='red')
+            plt.ylabel("MFCC")
+            plt.xlabel("Mel-scale Frequency")
+            plt.tight_layout(pad=1, w_pad=1, h_pad=1)
+            plt.savefig("./dataset_mfcc/%s/plot/%s/%s.png" %(smd, wavname, savename))
+            plt.close()
 
             np.save("./dataset_mfcc/%s/data/%s/%s" %(smd, wavname, savename), mfcc_spectrum)
 
