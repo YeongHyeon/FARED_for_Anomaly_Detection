@@ -1,7 +1,7 @@
 Sample Data of SMD Assembly Machine
 =====
 
-[Set-A](https://github.com/YeongHyeon/SMD_Sample_Data/tree/master/Set-A)  
+[Set-A](https://github.com/YeongHyeon/FARED_for_Anomaly_Detection/tree/master/sample_data/Set-A)  
 -----
 |Product name|Number of cycle|Cycle time (sec)|Total time (sec)|
 |:---:|:---:|:---:|:---:|
@@ -12,7 +12,7 @@ Sample Data of SMD Assembly Machine
 |NA-9473|53|13|696|
 |ST-4214-GE|9|12|114|  
 
-[Set-B](https://github.com/YeongHyeon/SMD_Sample_Data/tree/master/Set-B)  
+[Set-B](https://github.com/YeongHyeon/FARED_for_Anomaly_Detection/tree/master/sample_data/Set-B)  
 -----
 |Product name|Number of cycle|Cycle time (sec)|Total time (sec)|
 |:---:|:---:|:---:|:---:|
