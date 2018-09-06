@@ -3,7 +3,7 @@ Fast Adaptive RNN Encoder-Decoder for Anomaly Detection in SMD Assembly Machine
 
 Introduction
 -----
-This repository provides the source code of the paper "The Fast Adaptive RNN Encoder-Decoder for Anomaly Detection in SMD Assembly Machine" by <a href="https://github.com/YeongHyeon">YeongHyeon Park</a> & <a href="https://scholar.google.co.kr/citations?user=0tPAxMgAAAAJ&hl=ko&oi=ao">Il Dong Yun</a>. Even it provides sample data of each classes at [sample_data](https://github.com/YeongHyeon/FARED_for_Anomaly_Detection/tree/master/sample_data).  
+This repository provides the source code of the paper "Fast Adaptive RNN Encoder-Decoder for Anomaly Detection in SMD Assembly Machine" by <a href="https://github.com/YeongHyeon">YeongHyeon Park</a> & <a href="https://scholar.google.co.kr/citations?user=0tPAxMgAAAAJ&hl=ko&oi=ao">Il Dong Yun</a>. Even it provides sample data of each classes at [sample_data](https://github.com/YeongHyeon/FARED_for_Anomaly_Detection/tree/master/sample_data).  
 
 ![The FARED](figures/model.png)  
 Figure 1. Structure of Fast Adaptive RNN Encoder-Decoder.  
