@@ -1,9 +1,9 @@
-Fast Adaptive RNN Encoder-Decoder for Anomaly Detection in SMD Assembly Machine
+<a href="https://www.mdpi.com/1424-8220/18/10/3573">Fast Adaptive RNN Encoder-Decoder for Anomaly Detection in SMD Assembly Machine</a>
 =====
 
 Introduction
 -----
-This repository provides the source code of the paper "Fast Adaptive RNN Encoder-Decoder for Anomaly Detection in SMD Assembly Machine" by <a href="https://github.com/YeongHyeon">YeongHyeon Park</a> & <a href="https://scholar.google.co.kr/citations?user=0tPAxMgAAAAJ&hl=ko&oi=ao">Il Dong Yun</a>. Even it provides sample data of each classes at [sample_data](https://github.com/YeongHyeon/FARED_for_Anomaly_Detection/tree/master/sample_data).  
+This repository provides the source code of the paper <a href="https://www.mdpi.com/1424-8220/18/10/3573">"Fast Adaptive RNN Encoder-Decoder for Anomaly Detection in SMD Assembly Machine"</a> by YeongHyeon Park & Il Dong Yun. Even it provides sample data of each classes at [sample_data](https://github.com/YeongHyeon/FARED_for_Anomaly_Detection/tree/master/sample_data).  
 
 ![The FARED](figures/model.png)  
 Figure 1. Structure of Fast Adaptive RNN Encoder-Decoder.  
@@ -35,3 +35,20 @@ Data
 ```
 
 After preprocessing run the `run.py` in [FARED_source](https://github.com/YeongHyeon/FARED_for_Anomaly_Detection/tree/master/FARED_source) directory. It generates chekpoint of parameters, log for visualizing the training process with tensorboard and etc. Finally it generates 'valid' directory that contains L2 distance of each class data that computed by the FARED, then it can be visualize as matplotlib or something.  
+
+BibTeX
+-----
+```
+@Article{s18103573,
+  AUTHOR = {Park, YeongHyeon and Yun, Il Dong},
+  TITLE = {Fast Adaptive RNN Encoder–Decoder for Anomaly Detection in SMD Assembly Machine},
+  JOURNAL = {Sensors},
+  VOLUME = {18},
+  YEAR = {2018},
+  NUMBER = {10},
+  ARTICLE-NUMBER = {3573},
+  URL = {http://www.mdpi.com/1424-8220/18/10/3573},
+  ISSN = {1424-8220},
+  DOI = {10.3390/s18103573}
+}
+```
