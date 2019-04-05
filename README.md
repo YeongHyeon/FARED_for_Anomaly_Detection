@@ -1,28 +1,29 @@
-<a href="https://www.mdpi.com/1424-8220/18/10/3573">Fast Adaptive RNN Encoder-Decoder for Anomaly Detection in SMD Assembly Machine</a>
+Fast Adaptive RNN Encoder-Decoder for Anomaly Detection in SMD Assembly Machine
 =====
 
-Introduction
------
-This repository provides the source code of the paper <a href="https://www.mdpi.com/1424-8220/18/10/3573">"Fast Adaptive RNN Encoder-Decoder for Anomaly Detection in SMD Assembly Machine"</a> by YeongHyeon Park & Il Dong Yun. Even it provides sample data of each classes at [sample_data](https://github.com/YeongHyeon/FARED_for_Anomaly_Detection/tree/master/sample_data).  
+## SMD Assembly Machine
+This repository provides the source code of the paper <a href="https://www.mdpi.com/1424-8220/18/10/3573">"Fast Adaptive RNN Encoder-Decoder for Anomaly Detection in SMD Assembly Machine"</a>.
 
-![The FARED](figures/model.png)  
-Figure 1. Structure of Fast Adaptive RNN Encoder-Decoder.  
+<div align="center">
+  <img src="./figures/microphone.png" width="500">  
+  <p>The SMD assembly machine with microphone (red box)</p>
+</div>
 
-![microphone](figures/microphone.png)  
-Figure 2. The SMD assembly machine with microphone (red box).  
 
-|Loss graph of training process|Anomaly detection process|
-|:---:|:---:|
-|<img src = 'figures/loss.png'>|<img src = 'figures/detection.png'>|
+## Requirements
+* Python 3.5.2  
+* Tensorflow 1.4.0  
+* Numpy 1.13.3  
+* Scipy 1.2.0  
+* Matplotlib 3.0.2  
+* Librosa 0.5.1
 
-Figure 3. Result of training and detection process.  
 
-How to use?
------
-
-First, run the source code of the preprocessing for make dataset. It locates in the [preprocessing_source](https://github.com/YeongHyeon/FARED_for_Anomaly_Detection/tree/master/preprocessing_source) directory and it needs data like following structure. If the dataset is prepared then modify the data_path in `dat2npy_stft.py` and `dat2npy_mfcc.py`, and run it.  
+## Usage
+### Preparing the dataset
+First, Organize the audio dataset and keep as below.  
 ```
-Data
+Dataset
 ├── AT2-IN88-SINK
 │   ├── data_1.wav
 │   ├── data_2.wav
@@ -33,11 +34,26 @@ Data
 │     ...
 └── ST-4214-GE
 ```
+Then, run the python script as following.  
+```
+$ cd preprocessing_source
+$ python dat2npy_mfcc.py
+```
+Use `dat2npy_stft.py` instead of `dat2npy_mfcc.py` if you want to train FARED with Short Time Fourier Transform (STFT). The sample dataset is available at [sample_data](https://github.com/YeongHyeon/FARED_for_Anomaly_Detection/tree/master/sample_data).
 
-After preprocessing run the `run.py` in [FARED_source](https://github.com/YeongHyeon/FARED_for_Anomaly_Detection/tree/master/FARED_source) directory. It generates chekpoint of parameters, log for visualizing the training process with tensorboard and etc. Finally it generates 'valid' directory that contains L2 distance of each class data that computed by the FARED, then it can be visualize as matplotlib or something.  
+### Training and Test
+```
+$ cd FARED_source
+$ python run.py
+```
+:exclamation: The result of the experiment may differ to paper because we provide only sample audio data.
 
-BibTeX
------
+<div align="center">
+  <img src="./figures/model.png" width="500">  
+  <p>Architecture of Fast Adaptive RNN Encoder-Decoder</p>  
+</div>
+
+###BibTeX
 ```
 @Article{s18103573,
   AUTHOR = {Park, YeongHyeon and Yun, Il Dong},
