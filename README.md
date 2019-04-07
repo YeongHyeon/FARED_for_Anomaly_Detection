@@ -53,7 +53,8 @@ $ python run.py
   <p>Architecture of Fast Adaptive RNN Encoder-Decoder</p>  
 </div>
 
-###BibTeX
+
+### BibTeX
 ```
 @Article{s18103573,
   AUTHOR = {Park, YeongHyeon and Yun, Il Dong},
