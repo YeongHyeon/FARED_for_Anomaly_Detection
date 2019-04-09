@@ -1,5 +1,6 @@
 Sample Data of SMD Assembly Machine
 =====
+We provide only one cycle for each class.
 
 [Set-A](https://github.com/YeongHyeon/FARED_for_Anomaly_Detection/tree/master/sample_data/Set-A)  
 -----
