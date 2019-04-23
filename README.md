@@ -21,31 +21,34 @@ This repository provides the source code of the paper <a href="https://www.mdpi.
 
 ## Usage
 ### Preparing the dataset
-First, Organize the audio dataset and keep as below.  
+First, Organize the audio dataset and keep as below (when using other wav files). This repository provides example of data organization, so you can conduct experiment directly!
 ```
-Dataset
-├── AT2-IN88-SINK
+data_for_experiment
+├── Class-1
 │   ├── data_1.wav
 │   ├── data_2.wav
 │   ├── data_3.wav
 │   │     ...
 │   └── data_n.wav
-├── NA-9473
+├── Class-2
 │     ...
-└── ST-4214-GE
+└── Class-3
 ```
-Then, run the python script as following.  
+Run the python script as following.  
 ```
 $ cd preprocessing_source
 $ python dat2npy_mfcc.py
 ```
-Use `dat2npy_stft.py` instead of `dat2npy_mfcc.py` if you want to train FARED with Short Time Fourier Transform (STFT). The sample dataset is available at [sample_data](https://github.com/YeongHyeon/FARED_for_Anomaly_Detection/tree/master/sample_data).
+After, running above python script the directory named with 'dataset_mfcc' will be generated. Use `dat2npy_stft.py` instead of `dat2npy_mfcc.py` if you want to train FARED with Short Time Fourier Transform (STFT). The sample dataset is available at [sample_data](https://github.com/YeongHyeon/FARED_for_Anomaly_Detection/tree/master/sample_data).
 
 ### Training and Test
 ```
 $ cd FARED_source
 $ python run.py
 ```
+After, training FARED, it measure the reconstruction error for each class. Reconstruction errors will be saved in 'valids' directory with 'npy' file. You can calculate Area Under the Curve (AUC) of Receiver Operating Characteristic (ROC) curve or something.  
+
+
 :exclamation: The result of the experiment may differ to paper because we provide only sample audio data.
 
 <div align="center">
