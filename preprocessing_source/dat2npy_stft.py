@@ -44,7 +44,7 @@ def spectrum_normalizing(spectrum=None):
 
     return spectrum
 
-def main(smdname):
+def main(smdname, saveimg=False):
 
     smd = smdname.split('/')[-1]
     makedir("./dataset_stft/%s" %(smd))
@@ -83,39 +83,40 @@ def main(smdname):
             if(window_end >= signal.shape[0]):
                 break
 
-            plt.clf()
-            plt.rcParams['font.size'] = 15
-            spectrogram = scipy.misc.imresize(spectrogram, (1025, 1880), interp='bilinear', mode=None)
-            plt.imshow(np.rot90(spectrogram, k=1), cmap='nipy_spectral_r')
-            plt.ylabel("Time")
-            plt.xlabel("Frequency unit")
-            plt.tight_layout(pad=1, w_pad=1, h_pad=1)
-            plt.savefig("./dataset_stft/%s/spectra/%s/%s.png" %(smd, wavname, savename))
-            plt.close()
+            if(saveimg):
+                plt.clf()
+                plt.rcParams['font.size'] = 15
+                spectrogram = scipy.misc.imresize(spectrogram, (1025, 1880), interp='bilinear', mode=None)
+                plt.imshow(np.rot90(spectrogram, k=1), cmap='nipy_spectral_r')
+                plt.ylabel("Time")
+                plt.xlabel("Frequency unit")
+                plt.tight_layout(pad=1, w_pad=1, h_pad=1)
+                plt.savefig("./dataset_stft/%s/spectra/%s/%s.png" %(smd, wavname, savename))
+                plt.close()
 
-            plt.clf()
-            plt.rcParams['font.size'] = 15
-            plt.plot(spectrum, linewidth=1, color='navy')
-            plt.ylabel("Magnitude")
-            plt.xlabel("Frequency")
-            plt.tight_layout(pad=1, w_pad=1, h_pad=1)
-            plt.savefig("./dataset_stft/%s/spectra/%s/%s_avg.png" %(smd, wavname, savename))
-            plt.close()
+                plt.clf()
+                plt.rcParams['font.size'] = 15
+                plt.plot(spectrum, linewidth=1, color='navy')
+                plt.ylabel("Magnitude")
+                plt.xlabel("Frequency")
+                plt.tight_layout(pad=1, w_pad=1, h_pad=1)
+                plt.savefig("./dataset_stft/%s/spectra/%s/%s_avg.png" %(smd, wavname, savename))
+                plt.close()
 
-            plt.clf()
-            plt.subplot(211)
-            plt.title("Original Signal")
-            plt.plot(signal[window_start:window_end], linewidth=1, color='black')
-            plt.ylabel("Amplitude")
-            plt.xlabel("Time (Sampling Rate: %d)" %(sr))
-            plt.subplot(212)
-            plt.title("Spectrum")
-            plt.plot(spectrum, linewidth=1, color='red')
-            plt.ylabel("Magnitude")
-            plt.xlabel("Frequency")
-            plt.tight_layout(pad=1, w_pad=1, h_pad=1)
-            plt.savefig("./dataset_stft/%s/plot/%s/%s.png" %(smd, wavname, savename))
-            plt.close()
+                plt.clf()
+                plt.subplot(211)
+                plt.title("Original Signal")
+                plt.plot(signal[window_start:window_end], linewidth=1, color='black')
+                plt.ylabel("Amplitude")
+                plt.xlabel("Time (Sampling Rate: %d)" %(sr))
+                plt.subplot(212)
+                plt.title("Spectrum")
+                plt.plot(spectrum, linewidth=1, color='red')
+                plt.ylabel("Magnitude")
+                plt.xlabel("Frequency")
+                plt.tight_layout(pad=1, w_pad=1, h_pad=1)
+                plt.savefig("./dataset_stft/%s/plot/%s/%s.png" %(smd, wavname, savename))
+                plt.close()
 
             np.save("./dataset_stft/%s/data/%s/%s" %(smd, wavname, savename), spectrum)
 
@@ -125,7 +126,7 @@ def main(smdname):
 
 if __name__ == '__main__':
 
-    data_path = "./sample_data"
+    data_path = "../data_for_experiment"
 
     smdlist = glob.glob(os.path.join(data_path, "*"))
     smdlist.sort()
@@ -134,4 +135,4 @@ if __name__ == '__main__':
 
     for smd in smdlist:
         print(smd)
-        main(smdname=smd)
+        main(smdname=smd, saveimg=False)

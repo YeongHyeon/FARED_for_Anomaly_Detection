@@ -98,6 +98,8 @@ def validation(sess, neuralnet, saver,
     make_dir(path=os.path.join(PACK_PATH, 'valids'))
 
     print("\n** Validation of the LSTM model with %d sets." %(dataset.am_tot))
+    plt.clf()
+    plt.rcParams['font.size'] = 15
     for key in dataset.key_tot:
 
         list_dists = []
@@ -124,6 +126,15 @@ def validation(sess, neuralnet, saver,
         try: print("Avg propagation time: %.3f sec" %(elapsed_time/valcnt))
         except: print("Avg propagation time: 0 sec")
 
-        np.save("%s/valids/%s_l2dist" %(PACK_PATH, key), np.asarray(list_dists))
+        list_dists = np.asarray(list_dists)
+        plt.plot(list_dists, label=key)
+        plt.ylabel("loss")
+
+        np.save("%s/valids/%s_l2dist" %(PACK_PATH, key), list_dists)
         with open("%s/valids/%s_bunchs" %(PACK_PATH, key), 'wb') as fp:
             pickle.dump(list_bunchs, fp)
+
+    plt.legend(loc="best")
+    plt.tight_layout(pad=1, w_pad=1, h_pad=1)
+    plt.savefig("compare_loss.png")
+    plt.close()
