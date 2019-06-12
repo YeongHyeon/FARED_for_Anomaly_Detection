@@ -19,7 +19,7 @@ def main():
     sess.run(tf.global_variables_initializer())
     saver = tf.train.Saver()
 
-    tfp.training(sessl=sess, neuralnet=lstm, saver=saver, dataset=dataset, batch_size=FLAGS.batch, sequence_length=FLAGS.trainlen, iteration=FLAGS.iter)
+    tfp.training(sess=sess, neuralnet=lstm, saver=saver, dataset=dataset, batch_size=FLAGS.batch, sequence_length=FLAGS.trainlen, iteration=FLAGS.iter)
     tfp.validation(sess=sess, neuralnet=lstm, saver=saver, dataset=dataset, sequence_length=FLAGS.testlen)
 
 if __name__ == '__main__':
