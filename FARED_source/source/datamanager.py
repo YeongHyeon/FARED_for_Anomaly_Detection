@@ -1,4 +1,4 @@
-import os, inspect, glob, time, sys
+import os, inspect, glob, sys
 
 import numpy as np
 
