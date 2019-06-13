@@ -25,12 +25,12 @@ def main():
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--batch', type=int, default=100, help='-') # 100 batch * 36 sequence = 10 sec
-    parser.add_argument('--trainlen', type=int, default=30, help='-')
-    parser.add_argument('--testlen', type=int, default=30, help='-')
-    parser.add_argument('--iter', type=int, default=1000, help='-')
-    parser.add_argument('--trkey', type=str, default='AT2-IN88-SINK', help='-')
-    parser.add_argument('--cycle', type=int, default=7, help='-')
+    parser.add_argument('--batch', type=int, default=100, help='Mini-batch size') # 100 batch * 36 sequence = 10 sec
+    parser.add_argument('--trainlen', type=int, default=30, help='Sequence length for contruct test bunch. Mini-batch is constructed by bunchs. (Bunch is not Batch)')
+    parser.add_argument('--testlen', type=int, default=30, help='Sequence length for contruct test bunch. Mini-batch is constructed by bunchs. (Bunch is not Batch)')
+    parser.add_argument('--iter', type=int, default=1000, help='Number of iteration for training')
+    parser.add_argument('--trkey', type=str, default='None', help='Class name for training. Must prepare at least more than 2 .wav files.')
+    parser.add_argument('--cycle', type=int, default=1, help='Number of cycle for training. One cycle means one .wav file. Before training .wav file it should be splited cycle unit. But test .wav file does not need splitting procedure')
 
     FLAGS, unparsed = parser.parse_known_args()
 

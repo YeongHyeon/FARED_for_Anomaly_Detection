@@ -1,4 +1,4 @@
-import os, inspect, glob, time
+import os, inspect, glob, time, sys
 
 import numpy as np
 
@@ -14,10 +14,13 @@ class DataSet(object):
         self.keylist.sort() # sorting the subdir list is optional.
         for idx, sd in enumerate(self.keylist):
             self.keylist[idx] = sd.split('/')[-1]
+        print(self.keylist)
 
         # List
-        self.key_tr = key_tr
         self.key_tot = self.keylist
+        if('None' in key_tr): self.key_tr = [self.key_tot[0]]
+        else: self.key_tr = key_tr
+
         # Dictionary
         self.sublist_total = {}
         self.sublist_train = {}
@@ -42,7 +45,12 @@ class DataSet(object):
         # Information of dataset
         self.am_tot = len(self.keylist)
         self.am_tr = len(self.key_tr)
-        self.data_dim = np.load(self.sublist_total[self.keylist[0]][0][0]).shape[0]
+        try: self.data_dim = np.load(self.sublist_total[self.keylist[0]][0][0]).shape[0]
+        except:
+            print("\n\n!!! ERROR !!!")
+            print("You must prepare at least more than 2 \'.wav\' files.")
+            print("Or set the \'--cycle\' argument less than the number of \'.wav\' files\n\n")
+            sys.exit()
         # Variable for using dataset
         self.kidx_tr = 0 # key
         self.kidx_tot = 0
