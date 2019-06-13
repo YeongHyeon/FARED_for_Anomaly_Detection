@@ -56,6 +56,12 @@ After, training FARED, it measure the reconstruction error for each class. Recon
   <p>Architecture of Fast Adaptive RNN Encoder-Decoder</p>  
 </div>
 
+### Result with sample data
+<div align="center">
+  <img src="./figures/loss_sparse-ver.png" width="300"><img src="./figures/compare_loss.png" width="300">  
+  <p>Result</p>  
+</div>
+
 
 ### BibTeX
 ```
