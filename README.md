@@ -59,7 +59,9 @@ After, training FARED, it measure the reconstruction error for each class. Recon
 ### Result with sample data
 <div align="center">
   <img src="./figures/loss_sparse-ver.png" width="300"><img src="./figures/compare_loss.png" width="300">  
-  <p>Result</p>  
+  <p>The experimental result with sample data.</p>
+  <p>The left figure shows loss convergence of training procedure and the right figure shows measured errors.</p>
+  <p>The higher error means that it is out of the normal scope.</p>  
 </div>
 
 
