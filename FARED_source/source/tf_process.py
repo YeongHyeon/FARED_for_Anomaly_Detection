@@ -46,7 +46,7 @@ def training(sess, neuralnet, saver,
         list_loss.append(loss_tr)
         train_writer.add_summary(summaries, it)
 
-        if(it % 100 == 0):
+        if(it % 100 == 10):
             Y_pred = sess.run(neuralnet.logits, feed_dict={neuralnet.inputs:D_tr, neuralnet.outputs:D_tr})
             scipy.misc.imsave(os.path.join(PACK_PATH, 'results', str(it)+"_pred.png"), data2canvas(data=Y_pred, dy=sequence_length, dx=dataset.data_dim))
             scipy.misc.imsave(os.path.join(PACK_PATH, 'results', str(it)+"_gt.png"), data2canvas(data=D_tr, dy=sequence_length, dx=dataset.data_dim))
@@ -127,13 +127,14 @@ def validation(sess, neuralnet, saver,
         except: print("Avg propagation time: 0 sec")
 
         list_dists = np.asarray(list_dists)
-        plt.plot(list_dists, label=key)
-        plt.ylabel("loss")
+        plt.scatter(range(len(list_dists)), list_dists, label=key, s=10)
 
         np.save("%s/valids/%s_l2dist" %(PACK_PATH, key), list_dists)
         with open("%s/valids/%s_bunchs" %(PACK_PATH, key), 'wb') as fp:
             pickle.dump(list_bunchs, fp)
 
+    plt.xlabel("data (bunch of sequences) number")
+    plt.ylabel("loss")
     plt.legend(loc="best")
     plt.tight_layout(pad=1, w_pad=1, h_pad=1)
     plt.savefig("compare_loss.png")
