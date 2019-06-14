@@ -2,7 +2,7 @@ Fast Adaptive RNN Encoder-Decoder for Anomaly Detection in SMD Assembly Machine
 =====
 
 ## Introduction
-This repository provides the source code of the paper <a href="https://www.mdpi.com/1424-8220/18/10/3573">"Fast Adaptive RNN Encoder-Decoder for Anomaly Detection in SMD Assembly Machine"</a>.
+This repository provides the source code of the paper <a href="https://www.mdpi.com/1424-8220/18/10/3573/pdf">"Fast Adaptive RNN Encoder-Decoder for Anomaly Detection in SMD Assembly Machine"</a>.
 
 <div align="center">
   <img src="./figures/microphone.png" width="500">  
