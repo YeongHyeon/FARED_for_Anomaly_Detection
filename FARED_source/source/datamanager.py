@@ -45,7 +45,7 @@ class DataSet(object):
         # Information of dataset
         self.am_tot = len(self.keylist)
         self.am_tr = len(self.key_tr)
-        try: self.data_dim = np.load(self.sublist_total[self.keylist[0]][0][0]).shape[0]
+        try: self.data_dim = np.load(self.sublist_total[self.key_tr[0]][0][0]).shape[0]
         except:
             print("\n\n!!! ERROR !!!")
             print("You must prepare at least more than 2 \'.wav\' files.")
