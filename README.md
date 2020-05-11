@@ -17,7 +17,7 @@ This repository provides the source code of the paper "Fast Adaptive RNN Encoder
 * Numpy 1.13.3  
 * Scipy 1.2.0  
 * Matplotlib 3.0.2  
-* Librosa 0.5.1
+* Librosa 0.6.2
 
 
 ## Usage
