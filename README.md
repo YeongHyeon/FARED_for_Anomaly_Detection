@@ -12,12 +12,12 @@ This repository provides the source code of the paper "Fast Adaptive RNN Encoder
 
 
 ## Requirements
-* Python 3.5.2  
-* Tensorflow 1.4.0  
-* Numpy 1.13.3  
-* Scipy 1.2.0  
-* Matplotlib 3.0.2  
-* Librosa 0.6.2
+* Python 3.7.6   
+* Tensorflow 1.14.0  
+* Numpy 1.18.1  
+* Scipy 1.4.1  
+* Matplotlib 3.1.2  
+* Librosa 0.6.2  
 
 
 ## Usage
