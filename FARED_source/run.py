@@ -13,7 +13,7 @@ def main():
     training_keys.append(FLAGS.trkey)
 
     dataset = dman.DataSet(key_tr=training_keys, cycle=FLAGS.cycle)
-    lstm = nn.LSTM_Model(data_dim=dataset.data_dim)
+    lstm = nn.LSTM_Model_TF1_14(data_dim=dataset.data_dim)
 
     sess = tf.InteractiveSession()
     sess.run(tf.global_variables_initializer())

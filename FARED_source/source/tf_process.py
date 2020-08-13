@@ -48,11 +48,13 @@ def training(sess, neuralnet, saver,
 
         if(it % 100 == 10):
             Y_pred = sess.run(neuralnet.logits, feed_dict={neuralnet.inputs:D_tr, neuralnet.outputs:D_tr})
-            scipy.misc.imsave(os.path.join(PACK_PATH, 'results', str(it)+"_pred.png"), data2canvas(data=Y_pred, dy=sequence_length, dx=dataset.data_dim))
-            scipy.misc.imsave(os.path.join(PACK_PATH, 'results', str(it)+"_gt.png"), data2canvas(data=D_tr, dy=sequence_length, dx=dataset.data_dim))
+            plt.imsave(os.path.join(PACK_PATH, 'results', str(it)+"_pred.png"), data2canvas(data=Y_pred, dy=sequence_length, dx=dataset.data_dim))
+            plt.imsave(os.path.join(PACK_PATH, 'results', str(it)+"_gt.png"), data2canvas(data=D_tr, dy=sequence_length, dx=dataset.data_dim))
         print("Iteration [%d / %d] | Loss: %f" %(it, iteration, loss_tr))
 
         saver.save(sess, PACK_PATH+"/Checkpoint/model_checker")
+        tf.io.write_graph(sess.graph_def, PACK_PATH+"/Checkpoint", "model_checker.pb", as_text=False)
+        tf.io.write_graph(sess.graph_def, PACK_PATH+"/Checkpoint", "model_checker.pbtxt", as_text=True)
 
     print("Final iteration | Loss: %f" %(loss_tr))
 
@@ -63,7 +65,7 @@ def training(sess, neuralnet, saver,
     np.save("loss", list_loss)
 
     plt.clf()
-    plt.rcParams['font.size'] = 15
+    # plt.rcParams['font.size'] = 15
     plt.plot(list_loss, color='blue', linestyle="-", label="loss")
     plt.ylabel("loss")
     plt.xlabel("iteration")
@@ -81,7 +83,7 @@ def training(sess, neuralnet, saver,
             sparse_loss[i] = list_loss[i * unit]
 
         plt.clf()
-        plt.rcParams['font.size'] = 15
+        # plt.rcParams['font.size'] = 15
         plt.plot(sparse_loss_x, sparse_loss, color='blue', linestyle="-", label="loss")
         plt.ylabel("loss")
         plt.xlabel("iteration")
@@ -99,7 +101,7 @@ def validation(sess, neuralnet, saver,
 
     print("\n** Validation of the LSTM model with %d sets." %(dataset.am_tot))
     plt.clf()
-    plt.rcParams['font.size'] = 15
+    # plt.rcParams['font.size'] = 15
     for key in dataset.key_tot:
 
         list_dists = []
@@ -135,7 +137,7 @@ def validation(sess, neuralnet, saver,
 
     plt.xlabel("data (bunch of sequences) number")
     plt.ylabel("loss")
-    plt.legend(loc="best")
+    plt.legend(loc='center left', bbox_to_anchor=(1, 0.5))
     plt.tight_layout(pad=1, w_pad=1, h_pad=1)
     plt.savefig("compare_loss.png")
     plt.close()
