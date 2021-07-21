@@ -31,19 +31,6 @@ def spectrums2timeaverage(spects=None):
 
     return np.transpose(spect_avg)
 
-def spectrum_normalizing(spectrum=None):
-    ref = (np.max(spectrum) - np.min(spectrum))
-
-    if(ref == 0):
-        return spectrum
-
-    spectrum = (spectrum + 0.0001) / ref
-
-    ref = np.max(spectrum) - 1
-    spectrum = spectrum - ref
-
-    return spectrum
-
 def main(smdname, saveimg=False):
 
     smd = smdname.split('/')[-1]
@@ -72,13 +59,8 @@ def main(smdname, saveimg=False):
             spectrogram = librosa.core.stft(y=data, n_fft=2048, hop_length=int(2048/4), win_length=2048, window='hann')
             spectrogram = complex2magnitude(cmplx=spectrogram)
             spectrum = spectrums2timeaverage(spects=spectrogram)
-            spectrum = spectrum_normalizing(spectrum=spectrum)
-            spectrum = spectrum / (np.max(spectrum) - np.min(spectrum))
-
-            # spectrum = spectrum[:40]
 
             savename = "%s_%08d" %(wavname, window_start)
-            # print(savename)
 
             if(window_end >= signal.shape[0]):
                 break

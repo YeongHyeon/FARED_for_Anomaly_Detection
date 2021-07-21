@@ -23,19 +23,6 @@ def spectrums2timeaverage(spects=None):
 
     return np.transpose(spect_avg)
 
-def spectrum_normalizing(spectrum=None):
-    ref = (np.max(spectrum) - np.min(spectrum))
-
-    if(ref == 0):
-        return spectrum
-
-    spectrum = (spectrum + 0.0001) / ref
-
-    ref = np.max(spectrum) - 1
-    spectrum = spectrum - ref
-
-    return spectrum
-
 def main(smdname, saveimg=False):
 
     smd = smdname.split('/')[-1]
@@ -64,12 +51,8 @@ def main(smdname, saveimg=False):
             data = signal[window_start:window_end].astype(float)
             melspectrogram = librosa.feature.melspectrogram(y=data, sr=sr, n_fft=2048, hop_length=int(2048/4))
             mfcc_spectrum = spectrums2timeaverage(spects=melspectrogram)
-            mfcc_spectrum = mfcc_spectrum / (np.max(mfcc_spectrum) - np.min(mfcc_spectrum))
-
-            # mfcc_spectrum = mfcc_spectrum[:40]
 
             savename = "%s_%08d" %(wavname, window_start)
-            # print(savename)
 
             if(window_end >= signal.shape[0]):
                 break
